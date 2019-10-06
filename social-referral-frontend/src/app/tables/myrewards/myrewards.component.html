@@ -1,0 +1,53 @@
+
+
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Rewards</h4>
+                            <div class="content table-responsive">
+                                  <table class="table" *ngIf="referData.id!=null">
+                                    <thead class="text-primary">
+                            <b> <p >{{referData.badgeOccupied |uppercase}} Badge </p> </b>
+                                           <tr>
+                                            <!-- <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th> -->
+                                            <th >Referral Points</th>
+                                          
+                                           <th>Offer</th>
+                                          <!--   <th>{{referData | json
+                                                }}</th> -->
+                                          
+                                          </tr>
+                                      </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td>{{referData.netflixReferralRewards}}</td>
+                                            
+                                            <td>{{referData.subscribedto[0]| uppercase}}</td>
+                                            
+                                        
+                                        </tr> 
+                                        <tr >
+                                                <td>{{referData.primeReferralRewards}}</td>
+                                              
+                                                <td>{{referData.subscribedto[1] | uppercase}}</td>
+                                                
+                                            
+                                            </tr> 
+                                    </tbody>
+                              </table>
+    
+                            </div>
+                        </div>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+    

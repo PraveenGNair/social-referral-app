@@ -1,0 +1,58 @@
+Nikhil referred aditya for netflix subscription will get $10 for each.
+Nikhil referred 
+db.ReferralCollection.aggregate([{$group: { _id: "$_id", totalNetfixReward: { $sum: "$netflixReferralRewards"}}}]);
+db.ReferralCollection.aggregate([{$graphLookup: {from: "ReferralCollection",startWith: "$netflixReferredTo",connectFromField: "netflixReferredTo",connectToField: "name",as: "followerHierarchy"},{ $project: {"name": 1,"friends": 1,"connections who subscribed to netflix": "$followerHierarchy.name"}}}]);
+$graphLookup: {from: "ReferralCollection",startWith: "$netflixReferredTo",connectFromField: "netflixReferredTo",connectToField: "name",as: "followerHierarchy"},{ $project: {"name": 1,"friends": 1,"connections who subscribed to netflix": "$followerHierarchy.name"}}
+mongoimport --jsonArray -d test -c people --file MongoGraphSample.json
+mongoimport --jsonArray -d test -c ReferralCollection --file MongoGraphSocialReferral.json
+
+-Final working query based on all users
+db.ReferralCollection.aggregate([{$graphLookup: {from: "ReferralCollection",startWith: "$netflixReferredTo",connectFromField: "netflixReferredTo",connectToField: "name",as: "followerHierarchy",maxDepth: 1}},{ $project: {"name": 1,"subscribed to netflix": "$followerHierarchy.name"}}]);
+
+- Individual user
+db.ReferralCollection.aggregate([{$graphLookup: {from: "ReferralCollection",startWith: "$netflixReferredTo",connectFromField: "netflixReferredTo",connectToField: "name",as: "followerHierarchy",maxDepth: 1,restrictSearchWithMatch: { "name" : "Nikhil Rane" }}},{ $project: {"name": 1,"subscribed to netflix": "$followerHierarchy.name"}}]);
+
+
+{
+  "_id" : 1,
+  "name" : "Nikhil Rane",
+  "friends" : [ "Aditya Khajuria", "Manish Bisht" ],
+  "subscribedto" : [ "netflix", "amazon prime", "google play movies", "bigpondmovies" ],
+  "netflixReferredBy" : "",
+  "referralcode":"NIKS34FDSF5",
+  "netflixReferredTo":["Aditya Khajuria", "Praveen Nair"],
+  "netflixReferralRewards":20,
+  "primeReferredTo":[],
+  "primeReferralRewards":0
+}
+{
+  "_id" : 2,
+  "name" : "Manish Bisht",
+  "friends" : [ "Aditya Khajuria", "Nikhil Rane", "Praveen Nair" ],
+  "netflixReferredBy" : "Nikhil Rane",
+  "referralcode":"MAND9874DFDS",
+  "netflixReferredTo":["Praveen Nair"],
+  "netflixReferralRewards":0,
+  "primeReferredTo":[],
+  "primeReferralRewards":10
+}
+{ "_id" : 3,
+  "name" : "Praveen Nair",
+  "friends" : [ "Aditya Khajuria", "Nikhil Rane", "Manish Bisht" ],
+  "netflixReferredBy" : "Manish Bisht",
+  "referralcode":"PRAD88988DFDS",
+  "netflixReferredTo":[],
+  "netflixReferralRewards":10,
+  "primeReferredTo":[],
+  "primeReferralRewards":10
+}
+{ "_id" : 4,
+  "name" : "Aditya Khajuria",
+  "friends" : [ "Praveen Nair", "Nikhil Rane", "Manish Bisht" ],
+  "netflixReferredBy" : "Nikhil Rane",
+  "referralcode":"ADIGFD88DFJKHG",
+  "netflixReferredTo":[],
+  "netflixReferralRewards":10,
+  "primeReferredTo":["Praveen Nair", "Manish Bisht"],
+  "primeReferralRewards":20
+}

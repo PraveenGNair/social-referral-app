@@ -1,0 +1,35 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Subscribed Offers</h4>
+                        <div class="table-responsive">
+                               <table class="table">
+                                    <thead>
+                                        <tr>
+                                          <th class="text-center"></th>
+                                         
+                                        </tr>
+                                    </thead>
+                                  <tbody>
+                                      <tr *ngFor="let row of referData.subscribedto">
+                                          <td >{{row | uppercase}}</td>
+                                         
+                                         
+                                        
+                                      </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+

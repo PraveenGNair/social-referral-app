@@ -1,0 +1,151 @@
+<div class="wrapper wrapper-full-page">
+    <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/#/dashboard">OpenHack Stallions</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-example">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/dashboard">
+                            <i class="material-icons">dashboard</i> Dashboard
+                        </a>
+                    </li>
+                    <li class=" active ">
+                        <a href="/pages/register">
+                            <i class="material-icons">person_add</i> Register
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/pages/login">
+                            <i class="material-icons">fingerprint</i> Login
+                        </a>
+                    </li>
+                   <!--  <li class="">
+                        <a href="/pages/lock">
+                            <i class="material-icons">lock_open</i> Lock
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="full-page register-page" filter-color="black">
+        <div class="content">
+            <div class="row wrapper" >
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="card card-signup">
+                        <h2 class="card-title text-center">Register</h2>
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="card-content">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-rose">
+                                            <i class="material-icons">attach_money</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Referral Points</h4>
+                                            <p class="description">
+                                               Get referred by your friends and relatives to redeem your favorite subscription.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-primary">
+                                            <i class="material-icons">usb</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Stay Connected</h4>
+                                            <p class="description">
+                                                Stay connected to avail the best offers, subscriptions and gifts for yourself and your peers.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-info">
+                                            <i class="material-icons">group</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Support</h4>
+                                            <p class="description">
+                                                Reach out to us in case you find any technical assistance.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="social text-center">
+                                    <button class="btn btn-just-icon btn-round btn-twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </button>
+                                    <button class="btn btn-just-icon btn-round btn-dribbble">
+                                        <i class="fa fa-dribbble"></i>
+                                    </button>
+                                    <button class="btn btn-just-icon btn-round btn-facebook">
+                                        <i class="fa fa-facebook"> </i>
+                                    </button>
+                                    <h4> or be classical </h4>
+                                </div>
+                                <form class="form" method="" action="">
+                                    <div class="card-content">
+                                            <div *ngIf="id" class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i>You have been referred By <b>{{id}}.</b><br/></i>
+                                                            <p>Sign Up to proceed.Existing users use Login to proceed</p>
+                                                    </span>
+                                                   <!--  <input type="text" class="form-control"  name="referral" [(ngModel)]="id" placeholder="Referred By..."> -->
+                                            </div>
+                                                <div class="tim-typo" *ngIf="warningFlag">
+                                                        <p class="text-danger">
+                                                            Please fill the below details</p>
+                                                </div>  
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">face</i>
+                                            </span>
+                                            <input type="text" [(ngModel)]="firstname" name="firstname" class="form-control" placeholder="First Name...">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                            <input type="text" [(ngModel)]="email" name="email" class="form-control" placeholder="Email...">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>
+                                            <input type="password" [(ngModel)]="passwd" name="passwd" placeholder="Password..." class="form-control" />
+                                        </div>
+                                        <!-- If you want to add a checkbox to this form, uncomment this code -->
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="optionsCheckboxes" checked> I agree to the
+                                                <a href="#something">terms and conditions</a>.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="footer text-center">
+                                        <a  class="btn btn-primary btn-round" (click)="signup(firstname,email,passwd)">Get Started</a>
+                                    </div>
+                                  
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    
+        <div class="full-page-background" style="background-image: url(../../../assets/img/register.jpeg) "></div>
+    </div>
+
